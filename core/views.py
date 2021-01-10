@@ -69,7 +69,7 @@ class FlutterWaveVerification(View):
             ref = student.ref
             msg = f"Dear {student.name}, Your payment with reference: {tx_ref} is was not successful.. Try making the payment again. Please save this Transaction id: {transaction_id} for record process."
             messages.info(self.request, msg)
-            return redirect('payment', ref =ref)
+            return redirect('payment', ref=ref)
 
 def export_page (request):
     form = ExportForm()
