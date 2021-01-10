@@ -1,1 +1,1 @@
-web: gunicorn school2hub.wsgi --log-tails -
+web: gunicorn school2hub.wsgi --log-file -
