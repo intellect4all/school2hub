@@ -6,7 +6,7 @@ from .models import Student
 from django.views import View
 import requests, json
 from django.conf import settings
-import datetime
+from datetime import datetime
 
 def Home(request):
     form = DataForm()
@@ -79,10 +79,13 @@ def export_page (request):
         if form.is_valid():
             month = form.cleaned_data.get('month')
             day = form.cleaned_data.get('day')
-            date = datetime(month=month, day=day, year=2021)
-            students = Student.objects.filter(created=date)
-            pass
-
+            start_date=datetime(month=month, day=day, year=2021)
+            end_date=datetime.now()
+            students = Student.objects.filter(created__range=[start_date,end_date])
+            context = {
+                'students' : students
+            }
+            return render(request, 'result.html', context)
     context = {
         'form':form
     }
