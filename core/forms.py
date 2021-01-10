@@ -1,5 +1,4 @@
-from random import choices
-from django.forms import ModelForm,
+from django.forms import ModelForm
 from .models import *
 from django import forms
 
