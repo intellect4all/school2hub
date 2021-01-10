@@ -78,9 +78,9 @@ def export_page (request):
 
     if request.method == 'POST':
         form = ExportForm(request.POST)
-        if form.is_valid():
-            month = form.cleaned_data.get('month', '')
-            day = form.cleaned_data.get('day', '')
+        if form.is_valid:
+            month = form.cleaned_data.get('month')
+            day = form.cleaned_data.get('day')
             if month != '' and day != '':
                 start_date_naive=datetime(month=month, day=day, year=2021)
                 current_tz = timezone.get_current_timezone()
