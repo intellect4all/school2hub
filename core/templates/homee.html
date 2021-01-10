@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_22/checkout-shipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Dec 2020 11:27:54 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Glo Custom Data Plan for Unilorin Students</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/icons/favicon.ico' %}">
+
+
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: ['Open+Sans:300,400,600,700,800', 'Poppins:300,400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = '{% static "assets/js/webfont.js" %}';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler" type="button">
+                            <i class="icon-menu"></i>
+                        </button>
+                        <a href="" class="logo">
+                            <img src="{% static 'assets/images/logo1.jpg' %}" height="60" width="60" alt="Porto Logo">
+                        </a>
+                    </div>
+                </div><!-- End .container -->
+            </div><!-- End .header-middle -->
+
+
+        </header><!-- End .header -->
+
+        <main class="main">
+
+            <div class="container">
+                <ul class="checkout-progress-bar">
+
+                </ul>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <ul class="checkout-steps">
+                            <li>
+                                <h2 class="step-title">GLO Custom Data Plan Registration Page</h2>
+
+                                {%if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          
+          {{message}}
+          <button
+            type="button"
+            {%
+            if
+            message.tags
+            %}
+            class="{{message.tags}}"
+            {%
+            endif
+            %}
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        {% endfor %}
+        {% endif %}
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group required-field">
+                                        <label>Full Name </label>
+                                        <input type="text" class="form-control" name="name" maxlength="255" id="id_name" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group required-field">
+                                        <label>Matric No (Format: 17/20GB973)</label>
+                                        <input type="text" class="form-control" name="matric" maxlength="10" id="id_matric" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group">
+                                        <label>Email </label>
+                                        <input type="email" name="email" maxlength="255" id="id_email" required class="form-control">
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group required-field">
+                                        <label>Phone number (Glo number only. Format: 080********) </label>
+                                        <input type="text" class="form-control" name="phone" maxlength="11" id="id_phone" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group required-field">
+                                        <label>How many GB? </label>
+                                        <input type="number" class="form-control" name="total_gb" id="id_total_gb" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group">
+                                        <label>Level</label>
+                                        <div class="select-custom">
+                                            <select class="form-control" name="level" id="id_level" required>
+                                                <option value="USA" selected>Select level</option>
+                                                <option value="100">100 L</option>
+                                                <option value="200">200 L</option>
+                                                <option value="300">300 L</option>
+                                                <option value="400">400 L</option>
+                                                <option value="500">500 L</option>
+                                                <option value="600">600 L</option>
+                                            </select>
+                                        </div><!-- End .select-custom -->
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-primary">PROCEED</button>
+                                        
+                                    </div>
+                                </form>
+                            </li>
+
+
+                        </ul>
+                    </div><!-- End .col-lg-8 -->
+
+
+
+
+                </div><!-- End .container -->
+
+                <div class="mb-6"></div><!-- margin -->
+        </main><!-- End .main -->
+
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="container">
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="footer-middle   ">
+                    <div class="row">
+
+                        <div class="footer-bottom">
+                            <p class="footer-copyright">Built by School2 Hub &copy; 2020. All Rights Reserved</p>
+                            
+                        </div><!-- End .footer-bottom -->
+                    </div>
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+
+    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.min.js' %}"></script>
+
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.min.js' %}"></script>
+</body>
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_22/checkout-shipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Dec 2020 11:27:54 GMT -->
+
+</html>

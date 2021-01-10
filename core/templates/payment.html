@@ -1,0 +1,227 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_22/checkout-shipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Dec 2020 11:27:54 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Glo Custom Data Plan for Unilorin Students</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/icons/favicon.ico' %}">
+
+
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: ['Open+Sans:300,400,600,700,800', 'Poppins:300,400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = '{% static "assets/js/webfont.js" %}';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler" type="button">
+                            <i class="icon-menu"></i>
+                        </button>
+                        <a href="" class="logo">
+                            <img src="{% static 'assets/images/logo1.jpg' %}" height="60" width="60" alt="Porto Logo">
+                        </a>
+                    </div>
+                </div><!-- End .container -->
+            </div><!-- End .header-middle -->
+
+
+        </header><!-- End .header -->
+
+        <main class="main">
+
+            <div class="container">
+                <ul class="checkout-progress-bar">
+
+                </ul>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <ul class="checkout-steps">
+                            <li>
+                                <h2 class="step-title">Confirm your order and Make Payment</h2>
+                                <br>
+                                <br>
+                                <h3>Verify Information</h3>
+                                <div class="alert alert-success" role="alert">
+                                    Hello, <strong>{{student.name}}!</strong>  Please check the details to check for errors. The Price of {{student.total_gb}}GB is #{{student.amount}}. Do note that you'll be charged a token for processing.
+                                </div><!-- End .alert -->
+                                
+                                {%if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          
+          {{message}}
+          <button
+            type="button"
+            {%
+            if
+            message.tags
+            %}
+            class="{{message.tags}}"
+            {%
+            endif
+            %}
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        {% endfor %}
+        {% endif %}
+                                <div class="alert alert-success" role="alert">
+                                    Hello, <strong>{{student.name}}!</strong>  Please check the details to check for errors. The Price of {{student.total_gb}}GB is #{{student.amount}}. Do note that you'll be charged a token for processing.
+                                </div><!-- End .alert -->
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        Details
+                                        
+                                    </div><!-- End .card-header -->
+        
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4 class="">Personal Details</h4>
+                                                <br>
+                                                <address>
+                                                    <p> <strong> Matric No.:</strong>    {{student.matric}}</p><br>
+                                                    <p><strong> Name: </strong>   {{student.name}}</p> <br>
+                                                    <p> <strong> Email: </strong>   {{student.email}}</p> <br>
+                                                </address>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4 class="">Data Details</h4>
+                                                <address>
+                                                    <p> <strong> Total GB requested:</strong>    {{student.total_gb}}</p><br>
+                                                    <p><strong> Price: </strong>   #{{student.amount}}</p> <br>
+                                                    <p> <strong> Transaction ref: </strong>   {{student.ref}}</p> <br>
+                                                </address>
+                                            </div>
+                                        </div>
+                                        <form>
+                                            <script src="https://checkout.flutterwave.com/v3.js"></script>
+                                            <div class="form-footer">
+                                                <button type="button" onClick="makePayment()" class="btn btn-primary">Click here to make payment online</button>
+        
+                                            </div>
+                                        </form>
+                                        
+                                    </div><!-- End .card-body -->
+                                </div><!-- End
+                                
+                                
+                            </li>
+
+
+                        </ul>
+                    </div><!-- End .col-lg-8 -->
+
+
+
+
+                </div><!-- End .container -->
+
+                <div class="mb-6"></div><!-- margin -->
+        </main><!-- End .main -->
+
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="container">
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="footer-middle   ">
+                    <div class="row">
+
+                        <div class="footer-bottom">
+                            <p class="footer-copyright">Built by School2 Hub &copy; 2020. All Rights Reserved</p>
+                            
+                        </div><!-- End .footer-bottom -->
+                    </div>
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+
+    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.min.js' %}"></script>
+
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.min.js' %}"></script>
+
+    
+      
+      <script>
+          price = {{student.amount}}
+            price += price * 0.02
+        function makePayment() {
+          FlutterwaveCheckout({
+            public_key: "FLWPUBK_TEST-88d541ad7d3c9776a006f3d0611d5d98-X",
+            tx_ref: "{{student.ref}}",
+            amount: price,
+            currency: "NGN",
+            country: "NG",
+            payment_options: "card, ussd, banktransfer",
+            redirect_url: // specified redirect URL
+            "https://unilorin-glo.herokuapp.com/checkout/flutterwave/verification/",
+            customer: {
+              email: "{{student.email}}",
+              phone_number: "{{student.phone}}",
+              name: "{{student.name}}",
+              matric: "{{student.matric}}",
+              data: "{{student.total_gb}}",
+            },
+            callback: function (data) {
+              console.log(data);
+            },
+            onclose: function() {
+              // close modal
+            },
+            customizations: {
+              title: "Glo Data Payment",
+              description: "Please complete payment to activate your glo payment",
+              logo: "{% static 'assets/images/logo1.jpg'%}",
+            },
+          });
+        }
+      </script>
+</body>
+
+<!-- Mirrored from portotheme.com/html/porto_ecommerce/demo_22/checkout-shipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Dec 2020 11:27:54 GMT -->
+
+</html>
