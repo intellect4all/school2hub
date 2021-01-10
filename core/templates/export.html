@@ -95,7 +95,7 @@
         {% endif %}
                                 <form action="" method="POST">
                                     {% csrf_token %}
-                                    {{form.as_p}}
+                                    
                                     <div class="form-group required-field">
                                         <label>Month (Between 1 - 12) </label>
                                         <input type="number" class="form-control" max="12" name="month" max="2" id="id_month" required>
@@ -107,7 +107,7 @@
                                     </div><!-- End .form-group -->
                                     
                                     <div class="form-footer">
-                                        <button type="submit" class="btn btn-primary">PROCEED</button>
+                                        <button type="submit" class="btn btn-primary">Export</button>
                                         
                                     </div>
                                 </form>

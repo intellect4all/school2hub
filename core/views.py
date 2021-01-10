@@ -82,7 +82,9 @@ def export_page (request):
             month = form.cleaned_data.get('month', '')
             day = form.cleaned_data.get('day', '')
             if month != '' and day != '':
-                start_date=datetime(month=month, day=day, year=2021)
+                start_date_naive=datetime(month=month, day=day, year=2021)
+                current_tz = timezone.get_current_timezone()
+                start_date = current_tz.localize(start_date_naive)
                 end_date=timezone.now()
                 response = HttpResponse(content_type='text/csv')
                 response['Content-Disposition'] = 'attachment; filename="completed_reg_{start_date}_{end_date}.csv"'
