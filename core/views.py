@@ -67,7 +67,7 @@ class FlutterWaveVerification(View):
         else:
             student = Student.objects.get(ref=tx_ref)
             ref = student.ref
-            msg = f"Dear {student.name}, Your order with reference: {tx_ref} is not yet verified. Try making the payment again. Please save this Transaction id: {transaction_id} for record process."
+            msg = f"Dear {student.name}, Your payment with reference: {tx_ref} is was not successful.. Try making the payment again. Please save this Transaction id: {transaction_id} for record process."
             messages.info(self.request, msg)
             return redirect('payment', ref =ref)
 
@@ -80,7 +80,8 @@ def export_page (request):
             month = form.cleaned_data.get('month')
             day = form.cleaned_data.get('day')
             date = datetime(month=month, day=day, year=2021)
-            students = Student.objects.filter(created=)
+            students = Student.objects.filter(created=date)
+            pass
 
     context = {
         'form':form
