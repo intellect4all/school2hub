@@ -7,6 +7,8 @@ from django.views import View
 import requests, json
 from django.conf import settings
 from datetime import datetime
+from django.utils import timezone
+import csv
 
 def Home(request):
     form = DataForm()
@@ -77,15 +79,24 @@ def export_page (request):
     if request.method == 'POST':
         form = ExportForm(request.POST)
         if form.is_valid():
-            month = form.cleaned_data.get('month')
-            day = form.cleaned_data.get('day')
-            start_date=datetime(month=month, day=day, year=2021)
-            end_date=datetime.now()
-            students = Student.objects.filter(created__range=[start_date,end_date])
-            context = {
-                'students' : students
-            }
-            return render(request, 'result.html', context)
+            month = form.cleaned_data.get('month', '')
+            day = form.cleaned_data.get('day', '')
+            if month != '' and day != '':
+                start_date=datetime(month=month, day=day, year=2021)
+                end_date=timezone.now()
+                response = HttpResponse(content_type='text/csv')
+                response['Content-Disposition'] = 'attachment; filename="completed_reg_{start_date}_{end_date}.csv"'
+                writer = csv.writer(response)
+                writer.writerow(['Username', 'First name', 'Last name', 'Email address'])
+                data = Student.objects.filter(created__range=[start_date,end_date], status=True).values_list('username', 'first_name', 'last_name', 'email')
+                for entry in data:
+                    writer.writerow(entry)
+                return response
+            else :
+                msg = f"Error Exporting, please select date and try again"
+                messages.info(request, msg)
+                return redirect('export')
+
     context = {
         'form':form
     }

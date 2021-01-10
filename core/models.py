@@ -48,4 +48,5 @@ class Student(models.Model):
             self.amount = amount
         if self.ref == '':
             self.ref = f'{self.phone}{self.total_gb}{rand()}'
+        self.created = timezone.now()
         super().save(*args, **kwargs)

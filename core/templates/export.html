@@ -98,12 +98,12 @@
                                     {{form.as_p}}
                                     <div class="form-group required-field">
                                         <label>Month (Between 1 - 12) </label>
-                                        <input type="number" class="form-control" name="total_gb" id="id_total_gb" required>
+                                        <input type="number" class="form-control" max="12" name="month" max="2" id="id_month" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group required-field">
-                                        <label>Day (Between 1 - 31). If empty, all reg for the month will be returned. </label>
-                                        <input type="number" class="form-control" name="total_gb" id="id_total_gb" required>
+                                        <label>Day (Between 1 - 31).  </label>
+                                        <input type="number" class="form-control" max="31" maxlength="2" name="day" id="id_day" required>
                                     </div><!-- End .form-group -->
                                     
                                     <div class="form-footer">
