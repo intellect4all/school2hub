@@ -1,11 +1,12 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from .forms import DataForm
+from .forms import DataForm, ExportForm
 from django.contrib import messages
 from .models import Student
 from django.views import View
 import requests, json
 from django.conf import settings
+import datetime
 
 def Home(request):
     form = DataForm()
@@ -69,3 +70,19 @@ class FlutterWaveVerification(View):
             msg = f"Dear {student.name}, Your order with reference: {tx_ref} is not yet verified. Try making the payment again. Please save this Transaction id: {transaction_id} for record process."
             messages.info(self.request, msg)
             return redirect('payment', ref =ref)
+
+def export_page (request):
+    form = ExportForm()
+
+    if request.method == 'POST':
+        form = ExportForm(request.POST)
+        if form.is_valid():
+            month = form.cleaned_data.get('month')
+            day = form.cleaned_data.get('day')
+            date = datetime(month=month, day=day, year=2021)
+            students = Student.objects.filter(created=)
+
+    context = {
+        'form':form
+    }
+    return render (request, 'export.html', context)
