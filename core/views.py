@@ -78,11 +78,13 @@ def export_page (request):
 
     if request.method == 'POST':
         form = ExportForm(request.POST)
+        print("form entry point")
         if form.is_valid:
             month = form.cleaned_data.get('month')
             day = form.cleaned_data.get('day')
             if month != '' and day != '':
                 start_date_naive=datetime(month=month, day=day, year=2021)
+                print(f'{start_date_naive} entry')
                 current_tz = timezone.get_current_timezone()
                 start_date = current_tz.localize(start_date_naive)
                 end_date=timezone.now()
@@ -91,11 +93,19 @@ def export_page (request):
                 writer = csv.writer(response)
                 writer.writerow(['Username', 'First name', 'Last name', 'Email address'])
                 data = Student.objects.filter(created__range=[start_date,end_date], status=True).values_list('username', 'first_name', 'last_name', 'email')
+                print('database connection stage')
                 for entry in data:
                     writer.writerow(entry)
+                    print('data entry stage')
                 return response
             else :
                 msg = f"Error Exporting, please select date and try again"
+                print('error with month and date.')
+                messages.info(request, msg)
+                return redirect('export')
+        else :
+                msg = f"Form is not valid"
+                print('Error with form validity')
                 messages.info(request, msg)
                 return redirect('export')
 
