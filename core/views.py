@@ -89,7 +89,7 @@ def export_page (request):
                 start_date = current_tz.localize(start_date_naive)
                 end_date=timezone.now()
                 response = HttpResponse(content_type='text/csv')
-                response['Content-Disposition'] = 'attachment; filename="completed_reg_{start_date}_{end_date}.csv"'
+                response['Content-Disposition'] = 'attachment; filename="completed_reg_exports.csv"'
                 writer = csv.writer(response)
                 writer.writerow(['id', 'matric', 'email', 'name', 'phone', 'total_gb', 'created', 'amount'])
                 data = Student.objects.filter(created__range=[start_date,end_date], status=True).values_list('id', 'matric', 'email', 'name', 'phone', 'total_gb', 'created', 'amount')
