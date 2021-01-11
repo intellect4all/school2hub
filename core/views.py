@@ -91,8 +91,8 @@ def export_page (request):
                 response = HttpResponse(content_type='text/csv')
                 response['Content-Disposition'] = 'attachment; filename="completed_reg_{start_date}_{end_date}.csv"'
                 writer = csv.writer(response)
-                writer.writerow(['Username', 'First name', 'Last name', 'Email address'])
-                data = Student.objects.filter(created__range=[start_date,end_date], status=True).values_list('username', 'first_name', 'last_name', 'email')
+                writer.writerow(['id', 'matric', 'email', 'name', 'phone', 'total_gb', 'created', 'amount'])
+                data = Student.objects.filter(created__range=[start_date,end_date], status=True).values_list('id', 'matric', 'email', 'name', 'phone', 'total_gb', 'created', 'amount')
                 print('database connection stage')
                 for entry in data:
                     writer.writerow(entry)
