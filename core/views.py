@@ -15,7 +15,7 @@ def Home(request):
 
     if request.method == 'POST':
         form = DataForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             number = form.cleaned_data.get('phone') 
             matric = form.cleaned_data.get('matric') 
@@ -79,7 +79,7 @@ def export_page (request):
     if request.method == 'POST':
         form = ExportForm(request.POST)
         print("form entry point")
-        if form.is_valid:
+        if form.is_valid():
             month = form.cleaned_data.get('month')
             day = form.cleaned_data.get('day')
             if month != '' and day != '':
