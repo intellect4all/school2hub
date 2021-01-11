@@ -69,6 +69,6 @@ class Export(models.Model):
     # )
     
 
-    month = models.IntegerField(max_length=50)
-    day = models.IntegerField(max_length=50)
+    month = models.IntegerField()
+    day = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
