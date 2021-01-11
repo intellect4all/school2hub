@@ -50,3 +50,25 @@ class Student(models.Model):
             self.ref = f'{self.phone}{self.total_gb}{rand()}'
         self.created = timezone.now()
         super().save(*args, **kwargs)
+
+class Export(models.Model):
+    # MONTH = (
+    #     (1, 'JAN'),
+    #     (2, 'FEB'),
+    #     (3, 'MAR'),
+    #     (4, 'APR'),
+    #     (5, 'MAY'),
+    #     (6, 'JUN'),
+    #     (7, 'JUL'),
+    #     (8, 'AUG'),
+    #     (9, 'SEP'),
+    #     (10, 'OCT'),
+    #     (11, 'NOV'),
+    #     (12, 'DEC'),
+
+    # )
+    
+
+    month = models.IntegerField(max_length=50)
+    day = models.IntegerField(max_length=50)
+    date = models.DateTimeField(auto_now_add=True)
